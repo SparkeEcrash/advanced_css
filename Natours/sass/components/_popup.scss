@@ -10,6 +10,12 @@
 	visibility: hidden;
 	transition: all 1s;
 
+	@supports(-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) {
+		-webkit-backdrop-filter: blur(10px);
+		backdrop-filter: blur(10px);
+		background-color: rgba($color-black, .3);
+	}
+
 	&__content {
 		@include absCenter;
 		width: 75%;
@@ -27,6 +33,10 @@
 	&__left {
 		width: 33.333333%;
 		display: table-cell;
+
+		@include respond(tab-land) {
+			display: none;
+		}
 	}
 
 	&__right {
@@ -34,6 +44,10 @@
 		display: table-cell;
 		vertical-align: middle;
 		padding: 3rem 5rem;
+
+		@include respond(tab-land) {
+			width: 100%;
+		}
 	}
 
 	&__img {
@@ -52,6 +66,10 @@
 		column-count: 2;
 		column-gap: 4rem;
 		column-rule: 1px solid $color-grey-light-2;
+
+		@include respond(phone) {
+			column-count: 1;
+		}
 
 		// -moz-hyphens: auto;
 		// -ms-hyphens: auto;
